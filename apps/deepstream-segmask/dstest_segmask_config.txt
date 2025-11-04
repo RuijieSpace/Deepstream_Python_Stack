@@ -1,0 +1,48 @@
+################################################################################
+# Copyright (c) 2020-2023, NVIDIA CORPORATION. All rights reserved.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+################################################################################
+
+[property]
+gpu-id=0
+net-scale-factor=0.017507
+offsets=123.675;116.280;103.53
+model-color-format=0
+model-engine-file=/opt/nvidia/deepstream/deepstream/samples/models/mask2former/mask2former.onnx_b1_gpu0_fp32.engine
+onnx-file=/opt/nvidia/deepstream/deepstream/samples/models/mask2former/mask2former.onnx
+infer-dims=3;800;800
+batch-size=1
+## 0=FP32, 1=INT8, 2=FP16 mode
+network-mode=0
+num-detected-classes=2
+interval=0
+gie-unique-id=1
+network-type=3
+uff-input-blob-name=inputs
+output-blob-names=pred_masks;pred_scores;pred_classes
+parse-bbox-instance-mask-func-name=NvDsInferParseCustomMask2Former
+custom-lib-path=/opt/nvidia/deepstream/deepstream/lib/libnvds_infercustomparser_tao.so
+#no cluster
+cluster-mode=4
+output-instance-mask=1
+
+[class-attrs-all]
+pre-cluster-threshold=0.8
+

@@ -1,0 +1,3 @@
+/opt/nvidia/deepstream/deepstream/sources/Deepstream_Python_Stack/bindings/build/CMakeFiles/rebuild_cache.dir
+/opt/nvidia/deepstream/deepstream/sources/Deepstream_Python_Stack/bindings/build/CMakeFiles/edit_cache.dir
+/opt/nvidia/deepstream/deepstream/sources/Deepstream_Python_Stack/bindings/build/CMakeFiles/pyds.dir
