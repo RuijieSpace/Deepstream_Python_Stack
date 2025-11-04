@@ -1,0 +1,64 @@
+# DeepStream RTSP 输入输出配置（调试版本）
+
+models:
+  - id: 1
+    name: "Construction"
+    config: "dstest2_pgie_1_config.txt"
+    classes:
+      0: "excavator"
+      1: "pile_driver"
+      2: "vehicle"
+      3: "material"
+    color:
+      r: 1.0
+      g: 0.0
+      b: 0.0
+    border_width: 4
+
+  # - id: 2
+  #   name: "Person"
+  #   config: "dstest2_pgie_2_config.txt"
+  #   classes:
+  #     0: "person"
+  #   color:
+  #     r: 0.0
+  #     g: 1.0
+  #     b: 0.0
+  #   border_width: 3
+
+pipeline:
+  mode: "serial"  # serial 或 parallel
+  
+  streammux:
+    width: 1920
+    height: 1080
+    sync_inputs: false
+  
+  encoder:
+    bitrate: 8000000
+  
+  queue:
+    max_size_buffers: 3
+    leaky: 2
+    flush_on_eos: true
+
+  # 调试选项
+  debug:
+    use_fakesink: false  # ⭐ 先设为 true 测试，成功后改为 false
+
+  output:
+    rtsp:
+      rtsp_port: 8555
+      udp_port: 5400
+      multicast_ip: "224.224.255.255"
+      stream_path: "/ds-out"
+
+tracker:
+  enable: true
+  config_file: "dstest2_tracker_config.txt"
+  tracker_width: 640
+  tracker_height: 384
+  gpu_id: 0
+  ll_lib_file: "/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so"
+  ll_config_file: "config_tracker_NvDCF_perf.yml"
+  display_tracking_id: true
