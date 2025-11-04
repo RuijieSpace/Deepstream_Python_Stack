@@ -2,7 +2,7 @@
 gpu-id=0
 # ========== 模型路径 ==========
 onnx-file=/opt/nvidia/deepstream/deepstream/samples/models/Primary_Detector/highway_visible_20250812.pt.onnx
-model-engine-file=/opt/nvidia/deepstream/deepstream/sources/deepstream_python_apps/apps/deepstream-test1/model_b1_gpu0_fp32.engine
+model-engine-file=/opt/nvidia/deepstream/deepstream/samples/models/Primary_Detector/highway_visible_20250812.pt.onnx_b1_gpu0_fp16.engine
 labelfile-path=/opt/nvidia/deepstream/deepstream/samples/models/Primary_Detector/labels.txt
 
 # ========== 输入预处理 ==========
@@ -23,9 +23,9 @@ network-type=0
 # ========== 后处理配置 ==========
 cluster-mode=2
 # ⭐ 关键：使用编译的自定义解析器
-#parse-bbox-func-name=NvDsInferParseYolo
-#custom-lib-path=/opt/nvidia/deepstream/deepstream/samples/models/Primary_Detector/libnvdsinfer_custom_impl_Yolo.so
-#engine-create-func-name=NvDsInferYoloCudaEngineGet
+parse-bbox-func-name=NvDsInferParseYolo
+custom-lib-path=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/nvdsinfer_custom_impl_Yolo/libnvdsinfer_custom_impl_Yolo.so
+engine-create-func-name=NvDsInferYoloCudaEngineGet
 
 
 [class-attrs-all]
