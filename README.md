@@ -390,6 +390,68 @@ cd ~/deepstream8_project/test_data
 ls -lh output_video.mp4
 ```
 
+## 🗺️ 项目进度 Roadmap
+
+### ✅ 已完成 (Completed)
+
+#### 1️⃣ 官方模型视频检测测试（防止为假设的视频输入）
+- [x] 基础视频检测 Pipeline 搭建
+- [x] ResNet-10 模型集成
+- [x] 4 类目标检测（Vehicle, Person, Bicycle, Roadsign）
+- [x] 解决 Vulkan 驱动兼容性问题
+- [x] 视频文件输出功能
+
+#### 2️⃣ 自定义模型检测和视频推理并行测试
+- [x] YOLOv8 模型适配
+- [x] 自定义模型配置文件生成
+- [x] 模型性能测试（FPS 统计）
+- [x] 多模型并行推理验证
+
+#### 3️⃣ 添加跟踪模块进行测试
+- [x] NvDCF 跟踪器集成
+- [x] IOU 跟踪器支持
+- [x] 跟踪配置文件优化
+
+### 🚧 进行中 (In Progress)
+
+#### 4️⃣ 单视频流多模型测试（Yaml 文件配置）
+- [x] 4.1 模型串行
+  - 多级检测 Pipeline（如：车辆检测 → 车牌识别）
+- [x] 4.2 模型并行
+  - 多任务并行推理（如：检测 + 分割）
+- [ ] 4.3 串行 vs 并行对比
+  - 性能对比分析报告
+  - 最佳实践建议
+
+### 📋 计划中 (Planned)
+
+#### 5️⃣ 多视频流多模型
+- [ ] 4.1 模型串行
+  - 多路输入的串行处理
+- [ ] 4.2 模型并行
+  - 多路输入的并行推理
+- [ ] 4.3 不同路不同源对比
+  - 本地文件 vs RTSP 流性能对比
+  - 资源占用分析
+
+#### 6️⃣ RTSP 输入/RTSP 输出
+- [ ] 多流多模型的 RTSP 方式
+  - 实时视频流输入
+  - 多路 RTSP 输出
+  - 低延迟优化
+
+### 📊 功能完成度
+
+| 模块 | 状态 | 完成度 |
+|------|------|--------|
+| 环境部署 | ✅ 已完成 | 100% |
+| 官方模型测试 | ✅ 已完成 | 100% |
+| 自定义模型 | ✅ 已完成 | 100% |
+| 目标跟踪 | ✅ 已完成 | 100% |
+| 单流多模型 | 🚧 进行中 | 60% |
+| 多流多模型 | 📋 计划中 | 0% |
+| RTSP 完整方案 | 📋 计划中 | 30% |
+
 ## 📂 项目结构
 
 ```
@@ -401,14 +463,16 @@ Deepstream_Python_Stack/
 │   ├── performance_analysis.md        # 性能分析报告
 │   └── api_reference.md               # API 参考
 ├── examples/                          # 示例代码
-│   ├── 01_deepstream_test_1/          # 官方模型视频测试
-│   ├── 02_custom_model/               # 自定义模型推理
-│   ├── 03_object_tracking/            # 目标跟踪
-│   ├── 04_rtsp_single_stream/         # RTSP 单路输出
-│   └── 05_rtsp_multi_stream/          # RTSP 多路输出
+│   ├── 01_deepstream_test_1/          # 官方模型视频测试 ✅
+│   ├── 02_custom_model/               # 自定义模型推理 ✅
+│   ├── 03_object_tracking/            # 目标跟踪 ✅
+│   ├── 04_single_stream_multi_model/  # 单流多模型 🚧
+│   ├── 05_multi_stream_multi_model/   # 多流多模型 📋
+│   └── 06_rtsp_full_solution/         # RTSP 完整方案 📋
 ├── configs/                           # 配置文件
 │   ├── models/                        # 模型配置
-│   └── tracker/                       # 跟踪器配置
+│   ├── tracker/                       # 跟踪器配置
+│   └── yaml/                          # Yaml 配置文件 🚧
 ├── scripts/                           # 自动化脚本
 │   ├── install_docker.sh
 │   ├── install_nvidia_toolkit.sh
