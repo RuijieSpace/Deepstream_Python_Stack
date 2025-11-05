@@ -281,7 +281,7 @@ PGIE_CLASS_ID_ROADSIGN = 3
 MUXER_BATCH_TIMEOUT_USEC = 33000
 
 # 输出视频路径
-OUTPUT_VIDEO_PATH = "/workspace/output_video.mp4"
+OUTPUT_VIDEO_PATH = "/opt/nvidia/deepstream/deepstream/my_apps/test_data/output_video.mp4"
 
 def osd_sink_pad_buffer_probe(pad,info,u_data):
     frame_number=0
