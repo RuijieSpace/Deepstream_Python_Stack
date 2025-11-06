@@ -1,0 +1,33 @@
+[property]
+gpu-id=0
+# ========== 模型路径 ==========
+onnx-file=/opt/nvidia/deepstream/deepstream/my_apps/Deepstream_Python_Stack/models/highway_visible/highway_visible_20250812.pt.onnx
+model-engine-file=/opt/nvidia/deepstream/deepstream/my_apps/Deepstream_Python_Stack/models/highway_visible/model_b1_gpu0_fp16.engine
+labelfile-path=/opt/nvidia/deepstream/deepstream/my_apps/Deepstream_Python_Stack/models/highway_visible/labels.txt
+
+# ========== 输入预处理 ==========
+net-scale-factor=0.0039215697906911373
+infer-dims=3;1920;1920
+model-color-format=0
+maintain-aspect-ratio=1
+symmetric-padding=1
+
+# ========== 推理配置 ==========
+batch-size=1
+network-mode=2
+num-detected-classes=4
+interval=0
+gie-unique-id=1
+process-mode=1
+network-type=0
+# ========== 后处理配置 ==========
+cluster-mode=2
+# ⭐ 关键：使用编译的自定义解析器
+parse-bbox-func-name=NvDsInferParseYolo
+custom-lib-path=/opt/nvidia/deepstream/deepstream/my_apps/DeepStream-Yolo/nvdsinfer_custom_impl_Yolo/libnvdsinfer_custom_impl_Yolo.so
+engine-create-func-name=NvDsInferYoloCudaEngineGet
+
+[class-attrs-all]
+pre-cluster-threshold=0.25
+topk=300
+nms-iou-threshold=0.45
